@@ -1,0 +1,8 @@
+tqdm
+numpy
+tavily-python
+mistralai
+llama-index-core
+llama-index-llms-openai
+langchain[openai]
+openai
