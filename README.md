@@ -7,7 +7,7 @@
 <p align="center">
     🔍&nbsp;<a href="#about">About</a>
     | 🚀&nbsp;<a href="#quick-start">Quick Start</a>
-    | 📊&nbsp;<a href="#results-and-evaluation"> Results and Evaluation</a>
+    | 📊&nbsp;<a href="#results-and-evaluation">Results and Evaluation</a>
     | 🔗&nbsp;<a href="#citation">Citation</a>
 </p>
 
@@ -77,7 +77,7 @@ Traditional causal discovery methods rely solely on statistical correlations in 
     - Results will be saved in the `results/` folder.
 
 
-## 📊 Results and Evaluation
+## 📊Results and Evaluation
   MATMCD is evaluated on:
   - **Benchmark Datasets**: AutoMPG, DWDClimate, SachsProtein, Asia, and Child — covering both time-series and discrete data.
   - **AIOps Datasets**: Product Review and Cloud Computing — large-scale multivariate time series with event logs.
