@@ -7,7 +7,7 @@
 <p align="center">
     🔍&nbsp;<a href="#about">About</a>
     | 🚀&nbsp;<a href="#quick-start">Quick Start</a>
-    | 📊&nbsp;<a heref="#results-and-evaluation"> Results and Evaluation</a>
+    | 📊&nbsp;<a href="#results-and-evaluation"> Results and Evaluation</a>
     | 🔗&nbsp;<a href="#citation">Citation</a>
 </p>
 
