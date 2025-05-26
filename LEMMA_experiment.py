@@ -8,6 +8,7 @@ from Utils.RCA import random_walk_with_restart
 from Web_tools import split_summary_into_sub_questions
 
 causal_discovery_algorithm = "pc"
+# causal_discovery_algorithm = "Exact-Search"
 # causal_discovery_algorithm = "DirectLiNGAM"
 
 system_name = "Product_Review"
