@@ -31,7 +31,7 @@ MATMCD has a architecture as illustrated in Figure 1, which consists of the foll
 
 <div align="center">
 
-|[<img src="./image/model_framework.jpg" width=85%/>](./image/model_framework.jpg)|
+|[<img src="./image/model_framework.jpg" width=90%/>](./image/model_framework.jpg)|
 |:--:|
 |Figure 1: An illustration of MATMCD framework: (a) an overview of the framework, (b) the inner working of DA-Agent, and (c) the inner working of CC-Agent|
 </div>
