@@ -99,6 +99,10 @@ MATMCD has a architecture as illustrated in Figure 1, which consists of the foll
     <img src="./image/table2.png" alt="table2" width="80%">
 </p>
 
+<p align="center">
+    <img src="./image/table4.png" alt="table2" width="80%">
+</p>
+
 ## 🔗 Citation
 
 ```
