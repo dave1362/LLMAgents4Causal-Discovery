@@ -1,44 +1,49 @@
 <div align="center">
 
 # (ACL 2025 Findings) Exploring Multi-Modal Integration with Tool-Augmented LLM Agents for Precise Causal Discovery
-
+![PRs Welcome](https://img.shields.io/badge/PRs-Welcome-green)
+[![arXiv](https://img.shields.io/badge/arXiv-2412.13667-b31b1b.svg)](https://arxiv.org/abs/2412.13667)
+[![PyPI - Version](https://img.shields.io/pypi/v/version)](#package)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue)](https://opensource.org/license/MIT)
+[![Python: 3.11](https://img.shields.io/badge/Python-3.11-blue)]()
 </div>
 
 <p align="center">
     🔍&nbsp;<a href="#about">About</a>
     | 🚀&nbsp;<a href="#quick-start">Quick Start</a>
-    | 📊&nbsp;<a href="#results-and-evaluation">Results and Evaluation</a>
+    | 📊&nbsp;<a href="#results-and-evaluation">Evaluation</a>
     | 🔗&nbsp;<a href="#citation">Citation</a>
 </p>
 
-
-This is the official repository for paper "[Exploring Multi-Modal Integration with Tool-Augmented LLM Agents for Precise Causal Discovery](https://arxiv.org/abs/2412.13667)". We provide all the necessary code for both the main experiments and the ablation studies.
-
-
-
 ## 🔍About
 
-MATMCD (Multi-Agent with Tool-Augmented LLMs for Multi-Modality Enhanced Causal Discovery) is a novel framework designed to improve the accuracy of causal discovery by integrating multi-modal data using large language model (LLM) agents.
+This is the official repository for paper "[Exploring Multi-Modal Integration with Tool-Augmented LLM Agents for Precise Causal Discovery](https://arxiv.org/abs/2412.13667)". This paper proposes MATMCD (Multi-Agent with Tool-Augmented LLMs for Multi-Modality Enhanced Causal Discovery), a novel framework designed to improve causal discovery by integrating multi-modal data using tool-augmented large language model (LLM) agents.
 
 ### 🔧Framework
 
-Traditional causal discovery methods rely solely on statistical correlations in observational data, overlooking valuable semantic cues from external sources. MATMCD supports modular integration with various causal discovery algorithms (e.g., PC, ES, DirectLiNGAM), and enables enhanced reasoning by combining symbolic graphs and unstructured textual data. MATMCD addresses this gap by introducing a multi-agent system consisting of:
+Traditional causal discovery methods rely solely on statistical correlations in observational data, overlooking valuable semantic cues from external sources. MATMCD addresses this gap by introducing a multi-agent system. MATMCD supports modular integration with statistical causal discovery (SCD) algorithms (e.g., PC, ES, DirectLiNGAM), and enables enhanced reasoning by combining symbolic causal graphs and unstructured textual data.
 
-<p align="center">
-    <img src="./image/model_framework.jpg" alt="MATMCD" width="80%">
-</p>
+MATMCD has a architecture as illustrated in Figure 1, which consists of the following key components.
+- Causal Graph Estimator: generate an initual causal graph by calling a SCD algorithm.
+- Data Augmentation Agent (DA-Agent): retrieves and summarizes semantic context (e.g., from web or log data) using search tools and LLMs.
+- Causal Constraint Agent (CC-Agent): integrates the augmented data with the initial causal graph to verify or refute causal links using a reasoning pipeline.
+- Causal Graph Refiner: reconstructs the final causal graph by combining LLM-inferred constraints with a SCD algorithm.
 
-- Data Augmentation Agent (DA-AGENT): Retrieves and summarizes semantic context (e.g., from web or log data) using search tools and LLMs.
-- Causal Constraint Agent (CC-AGENT): Integrates augmented data with initial causal graphs to verify or refute causal links using a reasoning pipeline.
-- Causal Graph Refiner: Reconstructs the final causal graph by combining LLM-inferred constraints with traditional structure learning algorithms.
+<div align="center">
 
-### 🔑Key Features
+|[<img src="./image/model_framework.jpg" width="900"/>](./image/model_framework.jpg)|
+|:--:|
+|Figure 1: An illustration of MATMCD framework: (a) an overview of the framework, (b) the inner working of DA-Agent, and (c) the inner working of CC-Agent|
+</div>
 
-  - **Multi-source**: Integrates raw data, metadata, web documents, and logs to enrich semantic context for causal discovery. 
-  - **LLM Reasoning**: Employs tool-augmented LLMs to reason over causal structures using external knowledge and contextual cues.
-  - **Modular Design**: Features a modular architecture that allows easy swapping of LLMs and SCD algorithms for flexible adaptation.
 
-## 🚀Quick Start
+### 🔑 Key Features
+
+  - **Multi-modal data**: integrates time series data, metadata, web documents, and logs to enrich semantic context for causal discovery. 
+  - **LLM reasoning**: employs tool-augmented LLMs to reason over causal structures using external knowledge and contextual cues.
+  - **Modular design**: features a modular architecture that allows easy swapping of LLMs and SCD algorithms for flexible adaptation.
+
+## 🚀 Quick Start
 
 1. **Clone the Repository**
    ```bash
@@ -55,15 +60,15 @@ Traditional causal discovery methods rely solely on statistical correlations in 
    ```
 
 3. **Configure API Keys**
-   - add your API-keys in `config.py` file.
+   - Add API-keys in `config.py` file.
 
 4. **Download the datasets**
-    - Download the datasets have groundtruth from [AutoMPG](https://archive.ics.uci.edu/dataset/9/auto+mpg), [DWD Climate](https://webdav.tuebingen.mpg.de/cause-effect/), [Sachs](https://www.bnlearn.com/bnrepository/discrete-small.html#sachs), [Asic](https://www.bnlearn.com/bnrepository/discrete-small.html#asia), [Child](https://www.bnlearn.com/bnrepository/discrete-medium.html#child) and LEMMA_RCA datasets follow [LEMMA-RCA](https://lemma-rca.github.io/).
-    - Create `data` folder and put the data inside of them.
+    - Download benchmark datasets from [AutoMPG](https://archive.ics.uci.edu/dataset/9/auto+mpg), [DWD Climate](https://webdav.tuebingen.mpg.de/cause-effect/), [Sachs](https://www.bnlearn.com/bnrepository/discrete-small.html#sachs), [Asic](https://www.bnlearn.com/bnrepository/discrete-small.html#asia), [Child](https://www.bnlearn.com/bnrepository/discrete-medium.html#child) and LEMMA_RCA datasets from [LEMMA-RCA](https://lemma-rca.github.io/).
+    - Create a `data` folder and place the data in the folder.
 
 5. **Run the Application**
-    - Make sure your environment, API and dataset are accurate.
-    - Feel free to run the `python GTdatasets_experiment.py` to start.
+    - Make sure the environment, API and dataset are accurate.
+    - Run `python GTdatasets_experiment.py` to start.
 
 6. **Run Experiments and Evaluate**
     - Run benchmark experiments on standard datasets:
@@ -77,14 +82,14 @@ Traditional causal discovery methods rely solely on statistical correlations in 
     - Results will be saved in the `results/` folder.
 
 
-## 📊Results and Evaluation
-  MATMCD is evaluated on:
-  - **Benchmark Datasets**: AutoMPG, DWDClimate, SachsProtein, Asia, and Child — covering both time-series and discrete data.
+## 📊 Evaluation
+  **MATMCD is evaluated on**:
+  - **Benchmark Datasets**: AutoMPG, DWDClimate, SachsProtein, Asia, and Child — covering both time-series and sequence data.
   - **AIOps Datasets**: Product Review and Cloud Computing — large-scale multivariate time series with event logs.
 
-  Key results:
-  - **Up to 66.7% reduction in causal inference errors** (NHD) over SOTA methods.
-  - **Up to 83.3% improvement in root cause ranking accuracy** (MAP@10).
+  **Key results**:
+  - **Up to 66.7% reduction of causal inference errors** (in terms of NHD) over baseline methods.
+  - **Up to 83.3% improvement in root cause locating accuracy** (in terms of MAP@10).
 
 <p align="center">
     <img src="./image/table1.png" alt="table1" width="80%">
@@ -94,28 +99,18 @@ Traditional causal discovery methods rely solely on statistical correlations in 
     <img src="./image/table2.png" alt="table2" width="80%">
 </p>
 
-## 🔗Citation
+## 🔗 Citation
 
 ```
 @inproceedings{shen2025MATMCD,
   title={Exploring Multi-Modal Integration with Tool-Augmented LLM Agents for Precise Causal Discovery},
   author={Shen, ChengAo and Chen, Zhengzhang and Luo, Dongsheng and Xu, Dongkuan and Chen, Haifeng and Ni, Jingchao},
-  booktitle={ACL(Findings)},
+  booktitle={ACL (Findings)},
   year={2025}
 }
 ```
 
-## ✨Acknowledgement
+## 📧 Contract
 
-We appreciate the following GitHub repos a lot for their valuable code and efforts.
-
-- https://github.com/mas-takayama/LLM-and-SCD
-- https://github.com/superkaiba/causal-llm-bfs
-- https://github.com/tavily-ai/tavily-python
-
-
-
-## 📧Contract
-
-If you have any questions or concerns, please contact us: cshen9@uh.edu or submit an issue
+If you have any questions or concerns, please contact us: cshen9 [at] uh [dot] edu or submit an issue
 
