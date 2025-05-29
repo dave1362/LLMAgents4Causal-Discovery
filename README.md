@@ -63,8 +63,9 @@ MATMCD has a architecture as illustrated in Figure 1, which consists of the foll
    - Add API-keys in `config.py` file.
 
 4. **Download the datasets**
-    - Download benchmark datasets from [AutoMPG](https://archive.ics.uci.edu/dataset/9/auto+mpg), [DWD Climate](https://webdav.tuebingen.mpg.de/cause-effect/), [Sachs](https://www.bnlearn.com/bnrepository/discrete-small.html#sachs), [Asic](https://www.bnlearn.com/bnrepository/discrete-small.html#asia), [Child](https://www.bnlearn.com/bnrepository/discrete-medium.html#child) and LEMMA_RCA datasets from [LEMMA-RCA](https://lemma-rca.github.io/).
-    - Create a `data` folder and place the data in the folder.
+    - The original data can be download from [AutoMPG](https://archive.ics.uci.edu/dataset/9/auto+mpg), [DWD Climate](https://webdav.tuebingen.mpg.de/cause-effect/), [Sachs](https://www.bnlearn.com/bnrepository/discrete-small.html#sachs), [Asic](https://www.bnlearn.com/bnrepository/discrete-small.html#asia), [Child](https://www.bnlearn.com/bnrepository/discrete-medium.html#child) and LEMMA_RCA datasets from [LEMMA-RCA](https://lemma-rca.github.io/).
+    - The CSV format of the AutoMPG, DWD Climate, and Sachs datasets can be downloaded from [here](https://github.com/mas-takayama/LLM-and-SCD/tree/main). The Asia and Child datasets can be converted to CSV format via script `data/SampleFromBIF.py`.
+    - Place the data in the `data` folder.
 
 5. **Run the Application**
     - Make sure the environment, API and dataset are accurate.

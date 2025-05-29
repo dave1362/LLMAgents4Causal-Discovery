@@ -1,8 +1,0 @@
-tqdm==4.67.1
-numpy==2.2.6
-tavily-python==0.7.3
-mistralai==1.7.1
-llama-index-core==0.12.37
-llama-index-llms-openai==0.3.44
-langchain-openai==0.3.18
-openai==1.82.0
