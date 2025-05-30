@@ -17,7 +17,7 @@
 
 ## 🔍About
 
-This is the official repository for ACL 2025 (Findings) paper "[Exploring Multi-Modal Integration with Tool-Augmented LLM Agents for Precise Causal Discovery](https://arxiv.org/abs/2412.13667)". This paper proposes MATMCD (Multi-Agent system with Tool-augmented LLMs for Multi-modal enhancement of Causal Discovery), a novel framework designed to improve causal discovery by integrating multi-modal data using tool-augmented large language model (LLM) agents.
+This is the official repository for ACL 2025 (Findings) paper "[Exploring Multi-Modal Date with Tool-Augmented LLM Agents for Precise Causal Discovery](https://arxiv.org/abs/2412.13667)". This paper proposes MATMCD (Multi-Agent system with Tool-augmented LLMs for Multi-modal enhancement of Causal Discovery), a novel framework designed to improve causal discovery by integrating multi-modal data using tool-augmented large language model (LLM) agents.
 
 ### 🔧Framework
 
