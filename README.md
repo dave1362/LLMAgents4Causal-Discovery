@@ -1,6 +1,6 @@
 <div align="center">
 
-# (ACL 2025 Findings) Exploring Multi-Modal Date with Tool-Augmented LLM Agents for Precise Causal Discovery
+# (ACL 2025 Findings) Exploring Multi-Modal Data with Tool-Augmented LLM Agents for Precise Causal Discovery
 ![PRs Welcome](https://img.shields.io/badge/PRs-Welcome-green)
 [![arXiv](https://img.shields.io/badge/arXiv-2412.13667-b31b1b.svg)](https://arxiv.org/abs/2412.13667)
 [![PyPI - Version](https://img.shields.io/pypi/v/version)](#package)
@@ -17,7 +17,7 @@
 
 ## 🔍About
 
-This is the official repository for ACL 2025 (Findings) paper "[Exploring Multi-Modal Date with Tool-Augmented LLM Agents for Precise Causal Discovery](https://arxiv.org/abs/2412.13667)". This paper proposes MATMCD (Multi-Agent system with Tool-augmented LLMs for Multi-modal enhancement of Causal Discovery), a novel framework designed to improve causal discovery by integrating multi-modal data using tool-augmented large language model (LLM) agents.
+This is the official repository for ACL 2025 (Findings) paper "[Exploring Multi-Modal Data with Tool-Augmented LLM Agents for Precise Causal Discovery](https://arxiv.org/abs/2412.13667)". This paper proposes MATMCD (Multi-Agent system with Tool-augmented LLMs for Multi-modal enhancement of Causal Discovery), a novel framework designed to improve causal discovery by integrating multi-modal data using tool-augmented large language model (LLM) agents.
 
 ### 🔧Framework
 
@@ -108,7 +108,7 @@ MATMCD has a architecture as illustrated in Figure 1, which consists of the foll
 
 ```
 @inproceedings{shen2025MATMCD,
-  title={Exploring Multi-Modal Date with Tool-Augmented LLM Agents for Precise Causal Discovery},
+  title={Exploring Multi-Modal Data with Tool-Augmented LLM Agents for Precise Causal Discovery},
   author={Shen, ChengAo and Chen, Zhengzhang and Luo, Dongsheng and Xu, Dongkuan and Chen, Haifeng and Ni, Jingchao},
   booktitle={ACL (Findings)},
   year={2025}
