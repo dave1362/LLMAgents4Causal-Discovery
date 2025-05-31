@@ -5,7 +5,11 @@ from Utils.CausalDiscovery import (
 from Utils.data import load_Lemma_data
 from Utils.visualize import visualize_graph
 from Utils.RCA import random_walk_with_restart
-from Web_tools import split_summary_into_sub_questions
+from Web_tools import (
+    split_summary_into_sub_questions,
+    collect_web_content,
+    generate_dataset_summary,
+)
 
 causal_discovery_algorithm = "pc"
 # causal_discovery_algorithm = "Exact-Search"
@@ -74,9 +78,21 @@ for count, label in sorted_pairs:
 print("================================================\n")
 
 print("Running ConstrainAgent with web information...")
+# data_info, node_info = split_summary_into_sub_questions(
+#     open(f"./cache/Summarized_info/{system_name}_{day}_info.txt").read()
+# )
+
+collect_web_content(system_name, labels, loop_num=5, use_tavily=False)
 data_info, node_info = split_summary_into_sub_questions(
-    open(f"./cache/Summarized_info/{system_name}_{day}_info.txt").read()
+    generate_dataset_summary(
+        system_name,
+        labels,
+        output_dir="./cache/Summarized_info",
+        embeddings_path="./cache/RAG_Database/Embeddings",
+        save_embeddings=True,
+    )
 )
+
 
 print(data_info)
 print(node_info)

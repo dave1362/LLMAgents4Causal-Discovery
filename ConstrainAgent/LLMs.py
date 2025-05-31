@@ -160,8 +160,8 @@ class DomainKnowledgeLLM(LLMs):
         """
         num_nodes = self.graph_matrix.shape[0]
 
-        prompt = f"We have already conducted the statistical causal discovery with {self.causal_discovery_algorithm} algorithm.\n\n"
-        prompt += "All of the edges and their coefficients of the structural causal model suggested by the statistical causal discovery are below:\n"
+        prompt = f"We have conducted the statistical causal discovery with {self.causal_discovery_algorithm} algorithm.\n\n"
+        prompt += "The edges and their coefficients of the structural causal model suggested by the statistical causal discovery are as follows:\n"
 
         # Traverse adjacency matrix to generate edge descriptions
         for i in range(num_nodes):
@@ -205,7 +205,7 @@ class DomainKnowledgeLLM(LLMs):
         # Generate dataset description section
         if self.dataset_prompt == "":
             self.dataset_prompt = (
-                f"We want to carry out causal inference on {self.theme},"
+                f"We want to perform causal discovery on {self.theme},"
             )
 
             if self.dataset_information is not None:
@@ -234,14 +234,14 @@ class DomainKnowledgeLLM(LLMs):
 
         # Generate task description section
         final_prompt_template = (
-            f"Then, your task is to interpret this result from a domain knowledge perspective "
+            f"Your task is to interpret this result from a domain knowledge perspective "
             f"and determine whether this statistically suggested hypothesis is plausible in "
             f"the context of the domain.\n\n"
             f"Please provide an explanation that leverages your expert knowledge on the causal "
             f"relationship between {self.cause_entity} and {self.result_entity}, "
-            f"and assess the naturalness of this causal discovery result.\n "
+            f"and assess the correctness of this causal discovery result.\n "
             f"Your response should consider the relevant factors and provide "
-            f"a reasoned explanation based on your understanding of the domain."
+            f"a reasonable explanation based on your understanding of the domain."
         )
 
         # Combine complete prompt

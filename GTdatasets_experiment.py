@@ -5,7 +5,12 @@ from Utils.CausalDiscovery import (
 from Utils.data import load_data_from_csv
 from Utils.metrics import Metrics
 from Utils.visualize import visualize_graph
-from Web_tools import split_summary_into_sub_questions
+from Web_tools import (
+    split_summary_into_sub_questions,
+    # request_web_information,
+    generate_dataset_summary,
+    collect_web_content,
+)
 
 data_theme = {
     "Auto_MPG": "Gasoline consumption",
@@ -72,9 +77,19 @@ def experiment(dataset, theme):
 
     print("Running ConstrainAgent with Information Provided without Reasoning...")
     # data_info, node_info = request_web_information(dataset, labels, "default") # Web Fix search
+    # data_info, node_info = split_summary_into_sub_questions(
+    #     open(f"./cache/Summarized_info/{dataset}_info.txt").read()
+    # )
 
+    collect_web_content(dataset, labels, loop_num=5, use_tavily=False)
     data_info, node_info = split_summary_into_sub_questions(
-        open(f"./cache/Summarized_info/{dataset}_info.txt").read()
+        generate_dataset_summary(
+            dataset,
+            labels,
+            output_dir="./cache/Summarized_info",
+            embeddings_path="./cache/RAG_Database/Embeddings",
+            save_embeddings=True,
+        )
     )
 
     print(data_info)
@@ -117,8 +132,8 @@ def experiment(dataset, theme):
         f"./image/{dataset}/{causal_discovery_algorithm}_MATMCD.png",
     )
     Metrics(adjacency_matrix_optimized, GTmatrix).show_metrics()
-    print("================================================\n")
 
+    print("================================================\n")
     print("Running ConstrainAgent with Information Provided with Reasoning...")
 
     data_info, node_info = split_summary_into_sub_questions(

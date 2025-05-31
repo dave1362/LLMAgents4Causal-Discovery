@@ -55,26 +55,26 @@ def collect_web_content(
         query_client = OpenAIClient(api_key=OPENAI_API_KEY)
 
         query_client_prompt = (
-            f"Assume you have no prior knowledge about the {dataset_name} dataset and their nodes{','.join(labels)}. \n"
-            f"And you need to generate a question for other agents "
-            f"who can search web for information that can help you to summarize the dataset, the information of nodes and recognize the relationship between the nodes.\n"
-            f"Assuming you can ask multiple questions, split the question into multiple sub-questions.\n"
-            f"Your question should be specific and clear, and easy to search.\n"
-            f"Which question you will use to search for information?\n"
+            f"Assume you have no prior knowledge about the {dataset_name} dataset and its nodes{','.join(labels)}. \n"
+            f"You need to generate a queries for others"
+            f"who can search web for information that will help you to summarize the dataset and nodes, and help you recognize the relationships between the nodes.\n"
+            f"Split your query into multiple sub-questions. "
+            f"Ensure each query is specific and clear, and easy to be used for search.\n"
+            # f"Which question you will use to search for information?\n"
         )
 
         if len(previous_search_query) > 0:
             query_client_prompt += (
                 f"You have inquired about this question before as follows:\n"
                 f"{','.join(previous_search_query)}\n"
-                f"Please avoid to repeat the same question."
+                f"Please try to avoid repeating these queries."
             )
 
         query_client_prompt += (
-            "Please generate a new question to get more information like:\n"
-            "Search Question: <new question>\n"
-            "You only ask one question at a time."
-            "If you think no question needed to be searched, please return 'No question needed'."
+            "Generate a new query to get more information. Format your query as folows:\n"
+            "Search Query: <new question>\n"
+            "You should generate only one query at a time."
+            "If you think no additional queries are needed, please return 'No question needed'."
         )
 
         print(query_client_prompt)
@@ -134,11 +134,11 @@ def generate_dataset_summary(
     query_engine = index.as_query_engine()
 
     summary_query = (
-        f"Please provide a summary of the dataset {dataset_name} and their nodes including {','.join(labels)} using the knowledge from RAG Database and your domain knowledge."
-        f"Your answer should include the information of dataset and nodes."
-        f"If possible, please try to provide relationship between nodes after generate the summary of node."
-        f"Each Node should have their own summary. Your responce should include all the nodes."
-        f"Your answer need to follow the format:\n"
+        f"Please provide a summary of the dataset {dataset_name} and their nodes including {','.join(labels)} using the knowledge from RAG Database."
+        f"Your response should include detailed information on the dataset and each of its nodes."
+        # f"If possible, please try to provide relationship between nodes after generate the summary of node."
+        # f"Each Node should have their own summary. Your responce should include all the nodes."
+        f"Follow the structured format below in your answer:\n"
         f"Dataset Summary: <summary of the dataset>\n"
         f"---\n"
         f"Summary of the <Node Name>: <summary of the nodes>\n"
@@ -146,6 +146,8 @@ def generate_dataset_summary(
         f"Summary of the <Node Name>: <summary of the nodes>\n"
         f"---\n"
         f"...\n"
+        f"Additionally, try to include information on the relationships between the nodes"
+        f"after you have summarized each one. Make sure to cover all the nodes mentioned."
     )
     summary_response = query_engine.query(summary_query).response
 
