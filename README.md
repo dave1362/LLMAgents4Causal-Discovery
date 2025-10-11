@@ -115,7 +115,7 @@ MATMCD has a architecture as illustrated in Figure 1, which consists of the foll
 }
 ```
 
-## 📧 Contract
+## 📧 Contact
 
 If you have any questions or concerns, please contact us: cshen9 [at] uh [dot] edu or submit an issue
 
